@@ -23,7 +23,7 @@ const SendBlog = () => {
   };
 
   async function shareBlog() {
-    const url = 'http://localhost:5000/api/sblog';
+    const url = 'https://blogapp-api-yzwv.onrender.com/api/sblog';
     const token = localStorage.getItem('token');
 
     if (!token) {

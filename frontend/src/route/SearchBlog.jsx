@@ -11,7 +11,7 @@ const SearchBlog = () => {
         setLoading(true);
         setError('');
         try {
-            const response = await axios.get(`http://localhost:5000/api/blogs/search?query=${query}`);
+            const response = await axios.get(`https://blogapp-api-yzwv.onrender.com/api/blogs/search?query=${query}`);
             setBlogs(response.data);
         } catch (err) {
             setError('Failed to fetch blogs. Please try again.');

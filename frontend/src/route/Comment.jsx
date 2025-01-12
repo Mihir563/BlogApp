@@ -32,12 +32,12 @@ const Comment = () => {
                 if (!token) throw new Error('User not authenticated');
 
                 // Fetch the blog by blogId
-                const blogResponse = await axios.get(`http://localhost:5000/api/blog/${blogId}`, {
+                const blogResponse = await axios.get(`https://blogapp-api-yzwv.onrender.com/api/blog/${blogId}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
                 // Fetch the comments for the blog
-                const commentsResponse = await axios.get(`http://localhost:5000/api/comments/${blogId}`, {
+                const commentsResponse = await axios.get(`https://blogapp-api-yzwv.onrender.com/api/comments/${blogId}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -72,7 +72,7 @@ const Comment = () => {
 
             // Add a new comment
             await axios.post(
-                `http://localhost:5000/api/comments/${blogId}`,
+                `https://blogapp-api-yzwv.onrender.com/api/comments/${blogId}`,
                 { comment: newComment, blogId },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -80,7 +80,7 @@ const Comment = () => {
             setNewComment(''); // Clear the input field
 
             // Re-fetch comments
-            const updatedComments = await axios.get(`http://localhost:5000/api/comments/${blogId}`, {
+            const updatedComments = await axios.get(`https://blogapp-api-yzwv.onrender.com/api/comments/${blogId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

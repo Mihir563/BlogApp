@@ -21,7 +21,7 @@ const Admin = () => {
         try {
             if (!token) throw new Error("User not authenticated");
 
-            const response = await axios.get(`http://localhost:5000/api/admin/${username}`, {
+            const response = await axios.get(`https://blogapp-api-yzwv.onrender.com/api/admin/${username}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -36,7 +36,7 @@ const Admin = () => {
     // Fetch user profile details
     const fetchUserProfile = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/admin/${username}`, {
+            const response = await axios.get(`https://blogapp-api-yzwv.onrender.com/api/admin/${username}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -66,7 +66,7 @@ const Admin = () => {
         const confirmation = confirm("Are you sure you want to delete this blog?");
         if (confirmation) {
             try {
-                await axios.delete(`http://localhost:5000/api/blog/${blogId}`, {
+                await axios.delete(`https://blogapp-api-yzwv.onrender.com/api/blog/${blogId}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -96,7 +96,7 @@ const Admin = () => {
     const submitEdit = async () => {
         try {
             await axios.put(
-                `http://localhost:5000/api/blog/${editData.id}`,
+                `https://blogapp-api-yzwv.onrender.com/api/blog/${editData.id}`,
                 { title: editData.title, blog: editData.blog },
                 {
                     headers: { Authorization: `Bearer ${token}` },

@@ -14,8 +14,8 @@ const Auth = () => {
 
     try {
       const url = isLogin
-        ? "http://localhost:5000/api/auth/login"
-        : "http://localhost:5000/api/auth/register";
+        ? "https://blogapp-api-yzwv.onrender.com/api/auth/login"
+        : "https://blogapp-api-yzwv.onrender.com/api/auth/register";
 
       const userData = isLogin
         ? { username, password }

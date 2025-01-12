@@ -14,7 +14,7 @@ const Dashboard = () => {
     const fetchBlogs = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/api/dashboard", {
+        const response = await axios.get("https://blogapp-api-yzwv.onrender.com/api/dashboard", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -34,7 +34,7 @@ const Dashboard = () => {
   const handleLike = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post(`http://localhost:5000/api/blog/${id}/like`, {}, {
+      const response = await axios.post(`https://blogapp-api-yzwv.onrender.com/api/blog/${id}/like`, {}, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
