@@ -40,7 +40,7 @@ build/
 dist/
 
 # Environment variables
-.env
+api/.env
 .env.local
 .env.*.local
 
