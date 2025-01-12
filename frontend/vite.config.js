@@ -1,6 +1,7 @@
-// frontend/vite.config.js
+import { defineConfig } from 'vite';  // Make sure this is imported!
+
 export default defineConfig({
   build: {
-    outDir: 'dist', // Ensure this points to 'dist'
+    outDir: 'dist', // Ensure the output directory is 'dist'
   },
-})
+});
