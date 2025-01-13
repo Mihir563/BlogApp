@@ -13,7 +13,7 @@ const cors = require('cors')
 dotenv.config();
 app.use(bp.json());
 app.use(cors({
-    origin: ['https://your-frontend-domain.vercel.app', 'http://localhost:3000'], // Add allowed origins
+    origin: ['https://blog-app-front-blue.vercel.app/', 'http://localhost:5173', 'https://blogapp-front1.onrender.com'], // Add allowed origins
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
     credentials: true // If you need to send cookies
 }));
