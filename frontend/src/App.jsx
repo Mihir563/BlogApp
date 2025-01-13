@@ -9,34 +9,74 @@ import 'material-icons/iconfont/material-icons.css';
 import Admin from './route/Admin';
 import SearchBlog from './route/SearchBlog';
 
+// Protected Route Component
+const ProtectedRoute = ({ children, isLoggedIn }) => {
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+};
+
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Check login status on initial render
   useEffect(() => {
     const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
+    setIsLoading(false);
   }, []);
 
-  
-  
+  if (isLoading) {
+    return <div>Loading...</div>; // Or your loading component
+  }
+
   return (
-    <>
-      
-      <Router>
-        <Routes >
-          <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Auth />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/blog" element={<SendBlog />} />
-          
-          <Route path="/blog/:blogId"  element={<Comment />} />
-          <Route path="/admin"  element={<Admin />} />
-          <Route path="/search"  element={<SearchBlog />} />
-          
-          </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        {/* Public routes */}
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Auth />} />
+        <Route path="/search" element={<SearchBlog />} />
+
+        {/* Protected routes */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <SendBlog />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/blog/:blogId"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <Comment />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Catch all route */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 };
 
