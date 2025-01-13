@@ -12,11 +12,7 @@ const cors = require('cors')
 
 dotenv.config();
 app.use(bp.json());
-app.use(cors({
-    origin: ['https://your-frontend-domain.vercel.app', 'http://localhost:3000'], // Add allowed origins
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-    credentials: true // If you need to send cookies
-}));
+app.use(cors())
 
 const PORT = process.env.PORT;
 
