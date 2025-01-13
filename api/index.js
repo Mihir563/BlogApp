@@ -12,22 +12,26 @@ const cors = require('cors')
 
 dotenv.config();
 app.use(bp.json());
-app.use(cors())
+app.use(cors({
+    origin: ['https://blog-app-front-blue.vercel.app/', 'http://localhost:5173', 'https://blogapp-front1.onrender.com'], // Add allowed origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    credentials: true // If you need to send cookies
+}));
 
 const PORT = process.env.PORT;
 
 //Routes
-app.use('/api',sblog);
-app.use('/api',dashboard);
-app.use('/api',comment);
-app.use('/api/auth',auth)
-app.use('/api',admin)
+app.use('/api', sblog);
+app.use('/api', dashboard);
+app.use('/api', comment);
+app.use('/api/auth', auth)
+app.use('/api', admin)
 
 
 //Connect to db
 connectDB();
 
 //Connect to port
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })
