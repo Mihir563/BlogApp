@@ -21,34 +21,66 @@ const Header = () => {
 
   return (
     <div>
-          <header className="bg-white shadow-sm fixed top-0 left-0 right-0">
+          <header className="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
               <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                   <div className="flex items-center">
-                      <a href="/" className="font-bold text-xl text-gray-900">BlogApp</a>
+                      <a href="/" className="font-bold text-xl text-gray-900">
+                          BlogApp
+                      </a>
                   </div>
                   <div className="flex items-center space-x-4">
                       {!isLoggedIn ? (
-                      <>
-                              <p className='text-sm ml-12 text-red-400'>(*You can create a fake account or anything you want the authorization is not that important)</p>
-                              <a href="/login" className="text-gray-700 hover:text-gray-900">SignUp/Login</a></>
-                        ) : (
-                            <div className="flex items-center space-x-4">
-                              <a href="/search" className="text-gray-700 hover:text-gray-900"><span title='Upload Blog' className='material-icons-round '>search</span></a>
-                              <a href="/blog" className="text-gray-700 hover:text-gray-900"><span title='Upload Blog' className='material-icons-round '>send</span></a>
-                              <a href="/dashboard" className="text-gray-700 hover:text-gray-900"><span title='Dashboard' className='material-icons-round'>home</span></a>
-                              <a href="/admin" className="text-gray-700 hover:text-gray-900"><span title='Profile' className='material-icons-round'>person</span></a>
-                              {/* <button
-                                  onClick={handleLogout}
+                          <>
+                              <p className="text-xs sm:text-sm text-red-400 ml-2 sm:ml-4">
+                                  (*You can create a fake account or anything you want; authorization is not that important)
+                              </p>
+                              <a href="/login" className="text-gray-700 hover:text-gray-900 text-sm sm:text-base">
+                                  SignUp/Login
+                              </a>
+                          </>
+                      ) : (
+                          <div className="flex items-center space-x-2 sm:space-x-4">
+                              <a
+                                  href="/search"
                                   className="text-gray-700 hover:text-gray-900"
+                                  title="Search"
                               >
-                                  Logout
-                              </button> */}
+                                  <span className="material-icons-round">search</span>
+                              </a>
+                              <a
+                                  href="/blog"
+                                  className="text-gray-700 hover:text-gray-900"
+                                  title="Upload Blog"
+                              >
+                                  <span className="material-icons-round">send</span>
+                              </a>
+                              <a
+                                  href="/dashboard"
+                                  className="text-gray-700 hover:text-gray-900"
+                                  title="Dashboard"
+                              >
+                                  <span className="material-icons-round">home</span>
+                              </a>
+                              <a
+                                  href="/admin"
+                                  className="text-gray-700 hover:text-gray-900"
+                                  title="Profile"
+                              >
+                                  <span className="material-icons-round">person</span>
+                              </a>
+                              {/* Uncomment this if you want a logout button */}
+                              {/* <button
+              onClick={handleLogout}
+              className="text-gray-700 hover:text-gray-900"
+          >
+              Logout
+          </button> */}
                           </div>
                       )}
                   </div>
               </nav>
           </header>
-            
+
     </div>
   )
 }
