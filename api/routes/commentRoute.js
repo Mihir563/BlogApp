@@ -8,20 +8,17 @@ const router = express.Router()
 router.post('/comments/:blogId', middleware, async (req,res) => {
     try {
         const UID = req.user.id;
-        
-        const userid = req.user._id;
-        const findUser = await User.findOne(userid)
-        const username = findUser.username;
-        const {comment} = req.body;
+        const {comment, username} = req.body;
         const blog = await sblog.findById(req.params.blogId);
         const blogId = blog.id;
         console.log(username);
         
         
+        
         const newComment = new Comment({
             comment,
-            username,
             UID,
+            username,
             blogId
         })
 

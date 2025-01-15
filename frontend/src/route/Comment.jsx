@@ -68,14 +68,17 @@ const Comment = () => {
     const handleAddComment = async () => {
         try {
             const token = localStorage.getItem('token');
+            const username = localStorage.getItem('username');
             if (!token) throw new Error('User not authenticated');
+            
 
             // Add a new comment
             await axios.post(
                 `https://blogapp-api-yzwv.onrender.com/api/comments/${blogId}`,
-                { comment: newComment, blogId },
+                { comment: newComment, blogId, username },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
+            
 
             setNewComment(''); // Clear the input field
 
